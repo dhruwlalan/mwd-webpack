@@ -4,7 +4,7 @@
   "description": "Using babel without any bundler",
   "main": "input.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel input.js -o output.js"
   },
   "author": "dhruw",
   "license": "MIT",
