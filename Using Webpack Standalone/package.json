@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack"
+    "dev": "webpack --config webpack.config.js --mode development",
+    "prod": "webpack --config webpack.config.js --mode production"
   },
   "author": "dhruw",
   "license": "MIT",
