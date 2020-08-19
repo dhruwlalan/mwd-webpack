@@ -1,6 +1,6 @@
 
 const greet = (name) => {
-	console.log(`Hello, ${name}!`);
+	return `Hello, ${name}!`;
 }
 
 export { greet as default };

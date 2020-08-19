@@ -1,4 +1,8 @@
 
-import greet from './dependency.js';
+import greet from './greet.js';
 
-greet('dhruw');
+document.getElementById('greet-btn').addEventListener('click', () => {
+	const name = document.getElementById('input').value;
+	const output = greet(name);
+	document.getElementById('output').textContent = output;
+});

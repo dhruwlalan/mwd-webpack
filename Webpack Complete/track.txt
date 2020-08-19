@@ -1,0 +1,13 @@
+1. webpack:
+    webpack
+    webpack-cli
+    webpack-dev-server
+
+1. babel:
+    @babel/core
+    @babel/preset-env
+    core-js
+    regenerator-runtime
+    babel-loader
+
+3. html-webpack-plugin ~ create html template
