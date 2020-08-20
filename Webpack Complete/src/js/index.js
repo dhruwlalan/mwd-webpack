@@ -2,7 +2,11 @@ import '../sass/main.scss';
 import greet from './greet.js';
 
 document.getElementById('greet-btn').addEventListener('click', () => {
-	const name = document.getElementById('input').value;
-	const output = greet(name);
-	document.getElementById('output').textContent = output;
+	const input = document.getElementById('input').value;
+	if (input) {
+		const output = greet(input);
+		document.getElementById('output').textContent = output;
+	} else {
+		document.getElementById('output').textContent = '';
+	}	
 });
