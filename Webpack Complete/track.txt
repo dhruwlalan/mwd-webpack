@@ -22,3 +22,5 @@
 	sass-loader
 
 6. Implemented Cache busting & Clean webpack plugin
+
+7. html-loader and file-loader ~ handling assets

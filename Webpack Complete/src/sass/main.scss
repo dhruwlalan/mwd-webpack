@@ -23,9 +23,9 @@ body {
 }
 
 h1 {
+	display: inline-block;
 	font-size: 6rem;
 	font-weight: 800;
-	margin-bottom: 3rem;
 }
 
 h4 {
@@ -45,7 +45,7 @@ input {
 	outline: none;
 	background-color: transparent;
 	border: none;
-	border-bottom: 4px solid LIGHTCYAN;
+	border-bottom: 3px solid LIGHTCYAN;
 	color: LIGHTCYAN;
 	height: 5rem;
 	padding: 2rem;
@@ -60,6 +60,9 @@ input {
 	width: 18rem;
 	border-radius: 1rem;
 	align-self: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .container {
@@ -79,4 +82,23 @@ input {
   background-color: mediumspringgreen;
   border-color: none;
   box-shadow: none;
+}
+
+.svg-icon {
+	height: 2.5rem;
+	width: 2.5rem;
+	margin-left: 6px;
+}
+
+.webpack-img {
+	height: 5rem;
+	width: 5rem;
+	margin-right: 2rem;
+}
+
+.header {
+	margin-bottom: 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
