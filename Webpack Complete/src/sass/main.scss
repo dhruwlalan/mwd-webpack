@@ -1,3 +1,5 @@
+$primary: mediumspringgreen;
+@import "~bootstrap/scss/bootstrap";
 
 *, 
 *::after, 
@@ -13,4 +15,68 @@ html {
 
 body {
     box-sizing: border-box;
+    font-size: 3rem;
+    color: mediumspringgreen;
+    text-align: center;
+    background-color: teal;
+    min-height: 100vh;
+}
+
+h1 {
+	font-size: 6rem;
+	font-weight: 800;
+	margin-bottom: 3rem;
+}
+
+h4 {
+	font-size: 4rem;
+	margin-top: 4rem;
+	color: LIGHTCYAN;
+	font-weight: 600;
+}
+
+label {
+	font-size: 4rem;
+	margin: 2rem;
+	color: LIGHTCYAN;
+}
+
+input {
+	outline: none;
+	background-color: transparent;
+	border: none;
+	border-bottom: 4px solid LIGHTCYAN;
+	color: LIGHTCYAN;
+	height: 5rem;
+	padding: 2rem;
+}
+
+#greet-btn {
+	margin-top: 2rem;
+	font-size: 2rem;
+	font-weight: 600;
+	color: teal;
+	height: 5rem;
+	width: 18rem;
+	border-radius: 1rem;
+	align-self: center;
+}
+
+.container {
+	padding-top: 5rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.input-group {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.btn-primary:focus {
+  color: teal;
+  background-color: mediumspringgreen;
+  border-color: none;
+  box-shadow: none;
 }

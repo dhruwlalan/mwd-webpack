@@ -1,4 +1,4 @@
-
+import '../sass/main.scss';
 import greet from './greet.js';
 
 document.getElementById('greet-btn').addEventListener('click', () => {

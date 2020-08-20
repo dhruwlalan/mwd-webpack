@@ -11,3 +11,11 @@
     babel-loader
 
 3. html-webpack-plugin ~ create html template
+
+4. bootstrap and jquery
+
+5. css:
+	style-loader
+	css-loader
+	sass
+	sass-loader
