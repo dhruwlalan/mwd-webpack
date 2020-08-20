@@ -2,6 +2,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
 	mode: 'production' ,
@@ -43,5 +45,11 @@ module.exports = {
 		new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'src', 'index.html') }) ,
 		new MiniCssExtractPlugin({ filename: 'style.[contentHash].css' }) ,
 		new CleanWebpackPlugin()
-	]
+	] ,
+	optimization: {
+		minimizer: [
+			new OptimizeCssAssetsPlugin() ,
+			new TerserPlugin()
+		]
+	} 
 };
