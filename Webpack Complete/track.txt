@@ -26,3 +26,5 @@
 7. html-loader and file-loader ~ handling assets
 
 8. mini-css-extract-plugin and terser-webpack-plugin ~ minify css and js
+
+9. Handeling favicons.

@@ -1,3 +1,4 @@
+import '../assets/images/favicon.ico';
 import '../sass/main.scss';
 import greet from './greet.js';
 
