@@ -1,6 +1,7 @@
-import '../assets/images/favicon.ico';
-import '../sass/main.scss';
+import './assets.js';
 import greet from './greet.js';
+
+import './assets.js';
 
 document.getElementById('greet-btn').addEventListener('click', () => {
 	const input = document.getElementById('input').value;
