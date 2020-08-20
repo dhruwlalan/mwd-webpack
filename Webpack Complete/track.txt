@@ -15,6 +15,7 @@
 4. bootstrap and jquery
 
 5. css:
+    mini-css-extract-plugin
 	style-loader
 	css-loader
 	sass
