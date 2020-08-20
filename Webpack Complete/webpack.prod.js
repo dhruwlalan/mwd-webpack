@@ -9,7 +9,7 @@ module.exports = {
 		index: './src/js/index.js'
 	} ,
 	output: {
-		filename: 'bundle.[contentHash].js' ,
+		filename: '[name].[contentHash].bundle.js' ,
 		path: path.resolve(__dirname, 'dist')
 	} ,
 	module: {
