@@ -19,3 +19,5 @@
 	css-loader
 	sass
 	sass-loader
+
+6. favicon-webpack-plugin ~ for handling favicon.ico
