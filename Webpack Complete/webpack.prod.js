@@ -1,15 +1,14 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
 	mode: 'production' ,
-	entry: {
-		index: './src/js/index.js'
-	} ,
+	devtool: 'source-map' ,
+	entry: { index: './src/js/index.js' } ,
 	output: {
 		filename: '[name].[contentHash].bundle.js' ,
 		path: path.resolve(__dirname, 'dist')
@@ -57,9 +56,16 @@ module.exports = {
 		new CleanWebpackPlugin()
 	] ,
 	optimization: {
-		minimizer: [
-			new OptimizeCssAssetsPlugin() ,
-			new TerserPlugin()
-		]
-	} 
+		minimizer: [ new OptimizeCssAssetsPlugin() , new TerserPlugin() ],
+		splitChunks: {
+            cacheGroups: {
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendor',
+                    chunks: 'all',
+                    enforce: true
+                }
+            }
+        }
+	}
 };
