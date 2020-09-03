@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
 	mode: 'production' ,
@@ -15,9 +16,10 @@ module.exports = {
 	} ,
 	module: {
 		rules: [
+			{ test: /\.vue$/, loader: 'vue-loader' } ,
 			{ test: /\.js$/, exclude: /node_modules/, use: ['babel-loader'] } ,
 			{ test: /\.scss$/ , use: [
-				'style-loader', 
+				MiniCssExtractPlugin.loader, 
 				{
 					loader: 'css-loader',
 					options: {
@@ -27,7 +29,7 @@ module.exports = {
 				'sass-loader']
 			} ,
 			{ test: /\.html$/ , use: ['html-loader'] } , 
-			{ test: /\.(jpeg|png|jpg|gif)$/ , use: {loader: 'file-loader' , options: {name: '[name].[ext]' , outputPath: 'assets/images'}} },
+			{ test: /\.(jpeg|png|jpg|gif)$/ , use: {loader: 'file-loader' , options: {name: '[name].[ext]' , esModule: false , outputPath: 'assets/images'}} },
 			{ test: /\.svg$/ , use: {loader: 'file-loader' , options: {name: '[name].[ext]' , outputPath: 'assets/svg'}} },
 			{ test: /\.ico$/ , use: {loader: 'file-loader' , options: {name: 'favicon.ico' , outputPath: 'assets/favicon'}} },
 		]
@@ -39,7 +41,8 @@ module.exports = {
 			chunks: ['index']
 		}),
 		new MiniCssExtractPlugin({ filename: 'style.[contentHash].css' }) ,
-		new CleanWebpackPlugin()
+		new CleanWebpackPlugin() ,
+		new VueLoaderPlugin() ,
 	] ,
 	optimization: {
 		minimizer: [ new OptimizeCssAssetsPlugin() , new TerserPlugin() ],
@@ -53,5 +56,14 @@ module.exports = {
                 }
             }
         }
-	}
+	} ,
+    resolve: {
+		alias: {
+		  'vue$': 'vue/dist/vue.esm.js'
+		},
+		extensions: ['*', '.js', '.vue', '.json']
+	},
+	performance: {
+		hints: 'warning'
+	},
 };

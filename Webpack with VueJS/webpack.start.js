@@ -8,7 +8,7 @@ module.exports = {
 	entry: { index: './src/js/index.js' } ,
 	output: {
 		filename: '[name].bundle.js' ,	
-		path: path.resolve(__dirname, './dist') ,
+		path: path.resolve(__dirname, 'dist') ,
 	} ,
 	module: {
 		rules: [
