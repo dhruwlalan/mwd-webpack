@@ -1,3 +1,20 @@
+### Required Packages:
+<pre>
+v2.6.12  <b>vue</b>
+v15.9.3  <b>vue-loader</b>
+v2.6.12  <b>vue-template-compiler</b>
+</pre>
+
+### Installation:
+<pre>
+$ npm i vue
+$ npm i -D vue-loader vue-template-compiler
+</pre>
+
+<hr>
+
+<b>Webpack Config:</b>
+
 <details>
 <summary>webpack.start.js</summary>
 <br>
