@@ -13,7 +13,7 @@ $ npm i -D vue-loader vue-template-compiler
 
 <hr>
 
-<b>Webpack Config:</b>
+### Webpack Configs:
 
 <details>
 <summary>webpack.start.js</summary>
