@@ -22,6 +22,7 @@
     ]
 }
 </pre>
+<hr>
 </details>
 
 <details>
@@ -38,8 +39,9 @@
 `npm start` - To start the dev server.<br>
 `npm run dev` - Build the development version of project.<br>
 `npm run prod` - Build the production version of project.
-
+<hr>
 </details>
+
 <details>
 <summary><b>Webpack Config:</b></summary>
 <h6>webpack.start.js</h6>
@@ -284,7 +286,9 @@ module.exports = {
     } ,
 };
 ```
+<hr>
 </details>
+
 <details>
 <summary><b>Webpack Config with multiple entry points:</b></summary>
 
