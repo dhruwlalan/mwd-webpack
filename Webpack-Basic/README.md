@@ -293,6 +293,16 @@ module.exports = {
 <summary><b>Webpack Config with multiple entry points:</b></summary>
 
 ###### File Structure:
+```
+src
+├── js
+│   ├── index.js
+│   └── edit.js
+│
+├── edit.html  
+└── index.html
+```
+###### Webpack changes:
 ```js
 module.exports = {
     ...
