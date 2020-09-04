@@ -1,6 +1,4 @@
-
-<details>
-<summary><b>Babel Configuration:</b></summary>
+<b>Babel Configuration:</b>
 <h6>.babelrc</h6>
 <pre>
 {
@@ -23,10 +21,9 @@
 }
 </pre>
 <hr>
-</details>
 
-<details>
-<summary><b>Npm Scripts:</b></summary>
+
+<b>Npm Scripts:</b>
 <h6>inside package.json</h6>
 <pre>
 "scripts": {
@@ -40,11 +37,13 @@
 `npm run dev` - Build the development version of project.<br>
 `npm run prod` - Build the production version of project.
 <hr>
-</details>
+
+
+<b>Webpack Config:</b>
 
 <details>
-<summary><b>Webpack Config:</b></summary>
-<h6>webpack.start.js</h6>
+<summary><code>webpack.start.js</code></summary>
+<br>
 
 ```js
 const path = require('path');
@@ -121,7 +120,11 @@ module.exports = {
     } ,
 };
 ```
-<h6>webpack.dev.js</h6>
+</details>
+
+<details>
+<summary><code>webpack.dev.js</code></summary>
+<br>
 
 ```js
 const path = require('path');
@@ -202,7 +205,11 @@ module.exports = {
     } ,
 };
 ```
-<h6>webpack.prod.js</h6>
+</details>
+
+<details>
+<summary><code>webpack.prod.js</code></summary>
+<br>
 
 ```js
 const path = require('path');
@@ -286,11 +293,10 @@ module.exports = {
     } ,
 };
 ```
-<hr>
 </details>
+<hr>
 
-<details>
-<summary><b>Webpack Config with multiple entry points:</b></summary>
+<b>Webpack Config with multiple entry points:</b>
 
 ###### File Structure:
 ```
@@ -324,4 +330,3 @@ module.exports = {
     ...
 }
 ```
-</details>
