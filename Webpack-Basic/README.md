@@ -1,4 +1,4 @@
-<b>Babel Configuration:</b>
+### Babel Configuration:
 <h6>.babelrc</h6>
 <pre>
 {
@@ -23,7 +23,7 @@
 <hr>
 
 
-<b>Npm Scripts:</b>
+### Npm Scripts:
 <h6>inside package.json</h6>
 <pre>
 "scripts": {
@@ -39,7 +39,7 @@
 <hr>
 
 
-<b>Webpack Config:</b>
+### Webpack Configs:
 
 <details>
 <summary><code>webpack.start.js</code></summary>
@@ -296,7 +296,7 @@ module.exports = {
 </details>
 <hr>
 
-<b>Webpack Config with multiple entry points:</b>
+### Webpack Config with multiple entry points:
 
 ###### File Structure:
 ```
