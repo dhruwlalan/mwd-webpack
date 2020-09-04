@@ -1,15 +1,15 @@
 {
     "presets": [
         [
-            "@babel/preset-env", 
+            "@babel/preset-env" ,
             {
-                "useBuiltIns": "usage",
-                "corejs": "3",
+                "useBuiltIns": "usage" ,
+                "corejs": "3" ,
                 "targets": {
                     "browsers": [
-                        "> 1%",
-                        "last 2 versions",
-                        "not ie <= 8"
+                        "> 1%" ,
+                        "last 2 versions" ,
+                        "not ie <= 8" ,
                     ]
                 }
             }

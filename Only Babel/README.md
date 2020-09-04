@@ -22,13 +22,15 @@ $ npm i -D  @babel/core  @babel/preset-env  @babel/cli  core-js  regenerator-run
 {
     "presets": [
         [
-            "@babel/preset-env", 
+            "@babel/preset-env" ,
             {
-                "useBuiltIns": "usage",
-                "corejs": "3",
+                "useBuiltIns": "usage" ,
+                "corejs": "3" ,
                 "targets": {
                     "browsers": [
-                        "last 5 versions",
+                        "> 1%" ,
+                        "last 2 versions" ,
+                        "not ie <= 8" ,
                     ]
                 }
             }
