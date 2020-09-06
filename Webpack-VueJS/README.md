@@ -1,3 +1,35 @@
+### Complete Base Project Structure:
+<pre>
+src
+├── assets
+│   ├── favicon
+│   │   └── <i>favicon.ico</i>
+│   ├── images
+│   └── svg
+│
+├── js
+│   ├── assets
+│   │   └── <i>assets.js</i>
+│   ├── components
+│   ├── <i>App.vue</i>
+│   └── <i>index.js</i>
+│
+├── sass
+│   ├── abstracts
+│   │   ├── <i>_mixins.scss</i>
+│   │   └── <i>_variables.scss</i>
+│   ├── base
+│   │   ├── <i>_base.scss</i>
+│   │   └── <i>_reset.scss</i>
+│   ├── components
+│   ├── layout
+│   └── <i>main.scss</i>
+│
+└── <i>index.html</i>
+</pre>
+
+---
+
 ### Required Packages:
 <pre>
 v2.6.12  <b>vue</b>
@@ -323,35 +355,3 @@ module.exports = {
 };
 ```
 </details>
-
----
-
-### Complete Base Project Structure:
-<pre>
-src
-├── assets
-│   ├── favicon
-│   │   └── <i>favicon.ico</i>
-│   ├── images
-│   └── svg
-│
-├── js
-│   ├── assets
-│   │   └── <i>assets.js</i>
-│   ├── components
-│   ├── <i>App.vue</i>
-│   └── <i>index.js</i>
-│
-├── sass
-│   ├── abstracts
-│   │   ├── <i>_mixins.scss</i>
-│   │   └── <i>_variables.scss</i>
-│   ├── base
-│   │   ├── <i>_base.scss</i>
-│   │   └── <i>_reset.scss</i>
-│   ├── components
-│   ├── layout
-│   └── <i>main.scss</i>
-│
-└── <i>index.html</i>
-</pre>
