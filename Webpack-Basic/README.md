@@ -1,3 +1,33 @@
+### Complete Base Project Structure:
+<pre>
+src
+├── assets
+│   ├── favicon
+│   │   └── <i>favicon.ico</i>
+│   ├── images
+│   └── svg
+│
+├── js
+│   ├── assets
+│   │   └── <i>assets.js</i>
+│   └── <i>index.js</i>
+│
+├── sass
+│   ├── abstracts
+│   │   ├── <i>_mixins.scss</i>
+│   │   └── <i>_variables.scss</i>
+│   ├── base
+│   │   ├── <i>_base.scss</i>
+│   │   └── <i>_reset.scss</i>
+│   ├── components
+│   ├── layout
+│   └── <i>main.scss</i>
+│
+└── <i>index.html</i>
+</pre>
+
+---
+
 ### Babel Configuration:
 <h6>.babelrc</h6>
 <pre>
