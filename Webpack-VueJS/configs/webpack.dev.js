@@ -1,18 +1,16 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
-	mode: 'production' ,
+	mode: 'development' ,
 	devtool: 'source-map' ,
-	entry: { index: './src/js/index.js' } ,
+	entry: { index: path.resolve(__dirname, '../src/js/index.js') } ,
 	output: {
-		filename: '[name].[contentHash].bundle.js' ,
-		path: path.resolve(__dirname, 'dist') ,
+		filename: '[name].bundle.js' ,
+		path: path.resolve(__dirname, '../dist') ,
 	} ,
 	module: {
 		rules: [
@@ -29,7 +27,7 @@ module.exports = {
 				test: /\.scss$/ ,
 				use: [
 					MiniCssExtractPlugin.loader ,
-					{ loader: 'css-loader', options: { url: false } } ,
+					{ loader: 'css-loader' , options: { url: false } } ,
 					'sass-loader' ,
 				] ,
 			} ,
@@ -40,7 +38,7 @@ module.exports = {
 			{
 				test: /\.(jpeg|png|jpg|gif)$/ ,
 				use: {
-					loader: 'file-loader' ,
+					loader: 'file-loader' , 
 					options: { name: '[name].[ext]' , esModule: false , outputPath: 'assets/images' } ,
 				} ,
 			} ,
@@ -63,16 +61,15 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			filename: 'index.html' ,
-			template: path.resolve(__dirname, 'src', 'index.html') ,
+			template: path.resolve(__dirname, '../src', 'index.html') ,
 			chunks: ['index'] ,
 		}) ,
-		new MiniCssExtractPlugin({ filename: 'style.[contentHash].css' }) ,
+		new MiniCssExtractPlugin({ filename: 'style.css' }) ,
 		new CleanWebpackPlugin() ,
 		new VueLoaderPlugin() ,
 	] ,
 	optimization: {
-		minimizer: [ new OptimizeCssAssetsPlugin() , new TerserPlugin() ] ,
-		splitChunks: {
+        splitChunks: {
             cacheGroups: {
                 vendors: {
                     test: /[\\/]node_modules[\\/]/ ,
@@ -82,14 +79,19 @@ module.exports = {
                 }
             }
         }
-	} ,
+    } ,
     resolve: {
 		alias: {
 		  'vue$': 'vue/dist/vue.esm.js' ,
 		} ,
 		extensions: ['*', '.js', '.vue', '.json'] ,
 	} ,
+	devServer: {
+	    historyApiFallback: true ,
+	    noInfo: true ,
+	    overlay: true ,
+	} ,
 	performance: {
-		hints: 'warning' ,
+		hints: false ,
 	} ,
 };

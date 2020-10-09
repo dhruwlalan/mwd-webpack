@@ -5,10 +5,10 @@ const { VueLoaderPlugin } = require('vue-loader');
 module.exports = {
 	mode: 'development' ,
 	devtool: '#eval-source-map' ,
-	entry: { index: './src/js/index.js' } ,
+	entry: { index: path.resolve(__dirname, '../src/js/index.js') } ,
 	output: {
 		filename: '[name].bundle.js' ,
-		path: path.resolve(__dirname, 'dist') ,
+		path: path.resolve(__dirname, '../dist') ,
 	} ,
 	module: {
 		rules: [
@@ -59,7 +59,7 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({ 
 			filename: 'index.html' ,
-			template: path.resolve(__dirname, 'src', 'index.html') ,
+			template: path.resolve(__dirname, '../src', 'index.html') ,
 			chunks: ['index'] ,
 		}) ,
 		new VueLoaderPlugin() ,
