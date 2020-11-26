@@ -1,17 +1,10 @@
 const path = require('path');
 const express = require('express');
-const hpp = require('hpp');
 const helmet = require('helmet');
 const xss = require('xss-clean');
-const rateLimit = require('express-rate-limit');
-const mongoSanitize = require('express-mongo-sanitize');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
 const cors = require('cors');
-const AppError = require('./utils/appError');
-const errorController = require('./controllers/errorController');
-const userRouter = require('./routes/userRoutes');
-const viewRouter = require('./routes/viewRoutes');
 
 
 /*Create Express App*/
@@ -19,7 +12,7 @@ const app = express();
 
 /*Setup Template Engine*/
 app.set('view engine' , 'pug');
-app.set('views' , path.join(__dirname , 'views'));
+app.set('views' , path.join(__dirname , '../views'));
 
 /*Serve Static Files*/
 app.use( express.static(path.join(__dirname , 'public')) );
@@ -48,25 +41,10 @@ app.use( compression() );
 			styleSrc: ["'self'", "'unsafe-inline'", 'https:', 'http:'],
 		},
 	}));
-	// 4 data sanitization against nosql query injection & xss:
-	app.use(mongoSanitize());
-	app.use(xss());
-	// 5 Limit requests from same api:
-	app.use( '/api' , rateLimit({
-		max: 100,
-		windowMs: 60 * 60 * 1000,
-		message: 'Too many requests from this IP, please try again in an hour!'
-	}));
-	// 6 Prevent parameter pollution:
-	app.use(hpp({
-		whitelist: [ 'name' , 'age' , ] ,
-	}));
 
 /*Define Routes*/
-app.use( '/api/v1/users' , userRouter );
-app.use( '/' , viewRouter );
-
-/*Global Error Handler Middleware, executed when passed argument inside next()*/
-app.use(errorController);
+app.get('/' , (req , res) => {
+	res.status(200).render('index');
+});
 
 module.exports = app;
