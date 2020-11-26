@@ -2,13 +2,21 @@
 extends base
 
 block append script
-	//- - if ( process.env.FENV === 'development')
-	//- 	script(type='text/javascript' src='/vendor.bundle.js')
-	//- 	script(type='text/javascript' src='edit.bundle.js')
-	//- - else
-	//- 	script(type='text/javascript' src='/vendor.30e039025e09436b44fc.bundle.js')
-	//- 	script(type='text/javascript' src='edit.b2d5ae4db75bc3a9c75e.bundle.js')
+	- if ( process.env.FENV === 'development')
+		script(type='text/javascript' src='/index.bundle.js')
+		script(type='text/javascript' src='/vendor.bundle.js')
+	- else
+		script(type='text/javascript' src='/index.b2d5ae4db75bc3a9c75e.bundle.js')
+		script(type='text/javascript' src='/vendor.b2d5ae4db75bc3a9c75e.bundle.js')
 
 block content
 	div.container
-		h1 Hello, World!
+		div.header
+			img.webpack-img(src="/assets/images/webpack.png")
+			h1 Webpack Demo
+		div.input-group
+			label Enter your name:
+			input(type="text" id="input")
+		button(id="greet-btn") Greet
+			img.svg-icon(src="/assets/svg/greet.svg")
+		h4(id="output")

@@ -1,21 +1,110 @@
-// BASE
-@use "base/base";
-@use "base/reset";
-// COMPONENTS
-@use "components/alerts";
-@use "components/spinner";
-@use "components/pipes";
-// COMPONENTS/FORMS
-@use "components/forms/form";
-@use "components/forms/form-header";
-@use "components/forms/form-body";
-@use "components/forms/form-footer";
-@use "components/forms/form-btns";
-@use "components/forms/form-utils";
-// LAYOUT
-@use "layout/container";
-@use "layout/section";
-@use "layout/navbar";
-@use "layout/home";
-@use "layout/loginSignup";
-@use "layout/pageNotFound";
+
+*, 
+*::after, 
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+    box-sizing: border-box;
+    font-size: 3rem;
+    color: mediumspringgreen;
+    text-align: center;
+    background-color: teal;
+    min-height: 100vh;
+}
+
+h1 {
+	display: inline-block;
+	font-size: 6rem;
+	font-weight: 800;
+}
+
+h4 {
+	font-size: 4rem;
+	margin-top: 4rem;
+	color: Lavender;
+	font-weight: 600;
+}
+
+label {
+	font-size: 4rem;
+	margin: 2rem;
+	color: Lavender;
+}
+
+input {
+	outline: none;
+	background-color: transparent;
+	border: none;
+	border-bottom: 2px solid Lavender;
+	height: 5rem;
+	padding: 0 2rem;
+	color: Lavender;
+	font-size: 2.5rem;
+}
+
+#greet-btn {
+	margin-top: 2rem;
+	font-size: 2rem;
+	font-weight: 600;
+	background-color: MediumSpringGreen;
+	color: teal;
+	height: 5rem;
+	width: 18rem;
+	border-radius: 1rem;
+	align-self: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	outline: none;
+	border: none;
+}
+
+.container {
+	padding-top: 5rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.input-group {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#greet-btn:hover {
+  background-color: #4fffbb;
+}
+#greet-btn:focus {
+  box-shadow: 0 0 0 4px rgb(0 255 157 / 30%);
+}
+#greet-btn:active {
+  background-color: MediumSpringGreen;
+}
+
+.svg-icon {
+	height: 2.5rem;
+	width: 2.5rem;
+	margin-left: 6px;
+}
+
+.webpack-img {
+	height: 5rem;
+	width: 5rem;
+	margin-right: 2rem;
+}
+
+.header {
+	margin-bottom: 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
