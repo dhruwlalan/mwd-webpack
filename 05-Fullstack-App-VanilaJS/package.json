@@ -7,6 +7,7 @@
     "license": "MIT",
     "scripts": {
         "start": "node server/server.js",
+        "dev": "node server/server.js",
         "debug": "ndb server/server.js",
         "start:server": "cross-env nodemon server/server.js",
         "start:server:prod": "cross-env NODE_ENV=production nodemon server/server.js",
@@ -24,6 +25,8 @@
         "express": "^4.17.1",
         "helmet": "^4.1.1",
         "pug": "^3.0.0",
+        "webpack-dev-middleware": "^4.0.2",
+        "webpack-hot-middleware": "^2.25.0",
         "xss-clean": "^0.1.1"
     },
     "devDependencies": {
@@ -36,7 +39,7 @@
         "file-loader": "^6.0.0",
         "html-loader": "^1.2.1",
         "html-webpack-plugin": "^4.3.0",
-        "mini-css-extract-plugin": "^0.10.0",
+        "mini-css-extract-plugin": "^0.10.1",
         "optimize-css-assets-webpack-plugin": "^5.0.3",
         "regenerator-runtime": "^0.13.7",
         "sass": "^1.26.10",

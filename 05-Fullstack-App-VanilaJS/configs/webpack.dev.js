@@ -1,14 +1,21 @@
 const path = require('path');
+const webpack = require("webpack")
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
 	mode: 'development' ,
-	entry: { 
+	entry: {
 		index: path.resolve(__dirname, '../client/js/index.js') ,
 	} ,
 	output: {
 		filename: '[name].bundle.js' ,
 		path: path.resolve(__dirname, '../public') ,
+	} ,
+	devServer: {
+		contentBase: '../public',
+		watchContentBase: true,
+		inline: true,
+	    hot: true
 	} ,
 	module: {
 		rules: [
@@ -19,14 +26,14 @@ module.exports = {
 			{
 				test: /\.css$/ ,
 				use: [
-					MiniCssExtractPlugin.loader ,
+					'style-loader',
 					{ loader: 'css-loader' , options: { url: false, } } ,
 				] ,
 			} ,
 			{
 				test: /\.scss$/ ,
 				use: [
-					MiniCssExtractPlugin.loader ,
+					'style-loader',
 					{ loader: 'css-loader' , options: { url: false, } } ,
 					'sass-loader' ,
 				] ,
@@ -68,6 +75,7 @@ module.exports = {
 	} ,
 	plugins: [
 		new MiniCssExtractPlugin({ filename: 'style.css' }) ,
+		new webpack.HotModuleReplacementPlugin() ,
 	] ,
 	optimization: {
         splitChunks: {

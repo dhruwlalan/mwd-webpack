@@ -14,8 +14,6 @@ const app = express();
 app.set('view engine' , 'pug');
 app.set('views' , path.join(__dirname , '../views'));
 
-/*Serve Static Files*/
-app.use( express.static(path.join(__dirname , '../public')) );
 
 /*Use the BodyParser & CookieParser*/
 app.use( express.json({ limit: '10kb' }) );
