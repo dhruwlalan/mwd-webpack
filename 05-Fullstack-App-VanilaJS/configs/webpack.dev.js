@@ -16,7 +16,16 @@ module.exports = {
 		overlay: true ,
 		inline: true ,
 	    hot: true ,
-		stats: { colors: true } ,
+	} ,
+	stats: {
+		assets: true ,
+		modules: false ,
+	    builtAt: false ,
+	    version: false ,
+	    timings: false ,
+	    entrypoints: false ,
+	    colors: true ,
+	    hash: false ,
 	} ,
 	module: {
 		rules: [

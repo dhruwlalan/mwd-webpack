@@ -4,4 +4,4 @@ import '../assets/favicon/favicon.ico';
 import '../assets/images/webpack.png';
 import '../assets/svg/greet.svg';
 
-require("webpack-hot-middleware/client?reload=true");
+require("webpack-hot-middleware/client?reload=true&noInfo=true");
