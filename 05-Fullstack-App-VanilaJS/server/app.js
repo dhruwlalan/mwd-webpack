@@ -5,15 +5,26 @@ const xss = require('xss-clean');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
 const cors = require('cors');
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
+const config = require('../configs/webpack.dev.js');
 
 
 /*Create Express App*/
 const app = express();
 
+/*Hook webpack-dev-middleware with hot reload*/
+const compiler = webpack(config);
+app.use(webpackDevMiddleware(compiler));
+app.use(webpackHotMiddleware(compiler));
+
 /*Setup Template Engine*/
 app.set('view engine' , 'pug');
 app.set('views' , path.join(__dirname , '../views'));
 
+/*Serve Static Files*/
+app.use( express.static(path.join(__dirname , '../public')) );
 
 /*Use the BodyParser & CookieParser*/
 app.use( express.json({ limit: '10kb' }) );

@@ -12,10 +12,11 @@ module.exports = {
 		path: path.resolve(__dirname, '../public') ,
 	} ,
 	devServer: {
-		contentBase: '../public',
-		watchContentBase: true,
-		inline: true,
-	    hot: true
+		contentBase: '../public' ,
+		overlay: true ,
+		inline: true ,
+	    hot: true ,
+		stats: { colors: true } ,
 	} ,
 	module: {
 		rules: [

@@ -6,10 +6,8 @@ html(lang='en' dir='ltr')
 		meta(http-equiv='X-UA-Compatible' content='ie=edge')
 		title Webpack Demo
 		link(rel='icon' href='/assets/favicon/favicon.ico?v=2')
-		//- - if ( process.env.FENV === 'development')
-		//- 	link(rel='stylesheet' href='/style.css')
-		//- - else
-		//- 	link(rel='stylesheet' href='/style.94c917c9117258fe88b1.css')
+		- if ( process.env.FENV === 'production')
+			link(rel='stylesheet' href='/style.css')
 	body
 		block content
 		block script
