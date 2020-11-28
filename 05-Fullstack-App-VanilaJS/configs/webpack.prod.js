@@ -13,6 +13,18 @@ module.exports = {
 		filename: '[name].[contentHash].bundle.js' ,
 		path: path.resolve(__dirname, '../public') ,
 	} ,
+	stats: {
+		assets: false ,
+		modules: false ,
+	    builtAt: false ,
+	    version: false ,
+	    timings: false ,
+	    entrypoints: false ,
+	    colors: true ,
+	    hash: false ,
+	    warnings: true ,
+	    errors: true ,
+	} ,
 	module: {
 		rules: [
 			{

@@ -7,7 +7,7 @@ html(lang='en' dir='ltr')
 		title Webpack Demo
 		link(rel='icon' href='/assets/favicon/favicon.ico?v=2')
 		- if ( process.env.FENV === 'production')
-			link(rel='stylesheet' href='/style.css')
+			link(rel='stylesheet' href=`/${assets.cssBundle}`)
 	body
 		block content
 		block script

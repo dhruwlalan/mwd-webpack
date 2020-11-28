@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const express = require('express');
 const helmet = require('helmet');
 const xss = require('xss-clean');
@@ -13,10 +14,41 @@ const config = require('../configs/webpack.dev.js');
 /*Create Express App*/
 const app = express();
 
-/*Hook webpack-dev-middleware with hot reload*/
-const compiler = webpack(config);
-app.use(webpackDevMiddleware(compiler , { serverSideRender: true }));
-app.use(webpackHotMiddleware(compiler));
+if (process.env.FENV === 'development') {
+	/*Hook webpack-dev-middleware with hot reload*/
+	const compiler = webpack(config);
+	app.use(webpackDevMiddleware(compiler , { serverSideRender: true }));
+	app.use(webpackHotMiddleware(compiler));
+
+	/*Get Webpack Stats*/
+	app.use((req, res, next) => {
+		const { assetsByChunkName } = res.locals.webpack.devMiddleware.stats.toJson();
+		console.log(assetsByChunkName);
+		next();
+	});
+} else {
+	/*Scan /public dir */
+	let cssBundle = '';
+    let indexBundle = '';
+    let vendorBundle = '';
+	const publicDir = path.join(__dirname, '../public');
+	fs.readdir(publicDir , (err , files) => {
+	    if (err) return console.log('Unable to scan directory: ' + err);	    
+	    files.forEach(function (file) {	    	
+	    	if (file.startsWith('style')) cssBundle = file;
+	    	if (file.startsWith('index')) indexBundle = file;
+	    	if (file.startsWith('vendor')) vendorBundle = file;
+	    });
+	});
+	app.use((req, res, next) => {
+		res.locals.assets = {
+			cssBundle ,
+			indexBundle ,
+			vendorBundle ,
+		}
+		next();
+	});
+}
 
 /*Setup Template Engine*/
 app.set('view engine' , 'pug');
@@ -49,13 +81,6 @@ app.use( compression() );
 			styleSrc: ["'self'", "'unsafe-inline'", 'https:', 'http:'],
 		},
 	}));
-
-/*Get Webpack Stats*/
-app.use((req, res, next) => {
-	const { assetsByChunkName } = res.locals.webpack.devMiddleware.stats.toJson();
-	console.log(assetsByChunkName);
-	next();
-});
 
 /*Define Routes*/
 app.get('/' , (req , res) => {
