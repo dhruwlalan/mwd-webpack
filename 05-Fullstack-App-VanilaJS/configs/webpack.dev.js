@@ -18,7 +18,7 @@ module.exports = {
 	    hot: true ,
 	} ,
 	stats: {
-		assets: true ,
+		assets: false ,
 		modules: false ,
 	    builtAt: false ,
 	    version: false ,
@@ -26,6 +26,8 @@ module.exports = {
 	    entrypoints: false ,
 	    colors: true ,
 	    hash: false ,
+	    warnings: true ,
+	    errors: true ,
 	} ,
 	module: {
 		rules: [
@@ -53,6 +55,10 @@ module.exports = {
 				exclude: /node_modules/ ,
 				use: ['babel-loader'] ,
 			} ,
+			{
+				test: /\.pug$/ ,
+				use: ['pug-loader'] ,
+			},
 			{
 				test: /\.ico$/ ,
 				use: {

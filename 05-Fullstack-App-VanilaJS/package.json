@@ -7,7 +7,7 @@
     "license": "MIT",
     "scripts": {
         "start": "node server/server.js",
-        "dev": "node server/server.js",
+        "dev": "nodemon --watch configs --watch server server/server.js",
         "debug": "ndb server/server.js",
         "start:server": "cross-env nodemon server/server.js",
         "start:server:prod": "cross-env NODE_ENV=production nodemon server/server.js",
@@ -25,8 +25,7 @@
         "express": "^4.17.1",
         "helmet": "^4.1.1",
         "pug": "^3.0.0",
-        "webpack-dev-middleware": "^4.0.2",
-        "webpack-hot-middleware": "^2.25.0",
+        "pug-loader": "^2.4.0",
         "xss-clean": "^0.1.1"
     },
     "devDependencies": {
@@ -47,7 +46,9 @@
         "style-loader": "^1.2.1",
         "webpack": "^4.44.1",
         "webpack-cli": "^3.3.12",
-        "webpack-dev-server": "^3.11.0"
+        "webpack-dev-server": "^3.11.0",
+        "webpack-dev-middleware": "^4.0.2",
+        "webpack-hot-middleware": "^2.25.0"
     },
     "engins": {
         "node": "^10"
