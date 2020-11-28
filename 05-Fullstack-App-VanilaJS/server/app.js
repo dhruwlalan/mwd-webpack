@@ -15,7 +15,7 @@ const app = express();
 
 /*Hook webpack-dev-middleware with hot reload*/
 const compiler = webpack(config);
-app.use(webpackDevMiddleware(compiler));
+app.use(webpackDevMiddleware(compiler , { serverSideRender: true }));
 app.use(webpackHotMiddleware(compiler));
 
 /*Setup Template Engine*/
@@ -50,10 +50,17 @@ app.use( compression() );
 		},
 	}));
 
+/*Get Webpack Stats*/
+app.use((req, res, next) => {
+	const { assetsByChunkName } = res.locals.webpack.devMiddleware.stats.toJson();
+	console.log(assetsByChunkName);
+	next();
+});
+
 /*Define Routes*/
 app.get('/' , (req , res) => {
 	res.status(200).render('index' , {
-		title: 'Webpack demoo' ,
+		title: 'Webpack Demo' ,
 	});
 });
 
