@@ -52,7 +52,9 @@ app.use( compression() );
 
 /*Define Routes*/
 app.get('/' , (req , res) => {
-	res.status(200).render('index');
+	res.status(200).render('index' , {
+		title: 'Webpack demoo' ,
+	});
 });
 
 module.exports = app;
