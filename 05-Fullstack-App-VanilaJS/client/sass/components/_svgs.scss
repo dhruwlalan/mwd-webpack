@@ -1,0 +1,6 @@
+@use '../abstracts' as *;
+
+.greet-svg {
+	@include size( $h: 2.5rem , $w: 2.5rem , );
+	@include pbm( $ml: 6px , );
+}

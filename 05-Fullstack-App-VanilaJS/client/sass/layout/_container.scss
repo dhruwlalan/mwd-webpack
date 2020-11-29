@@ -1,0 +1,8 @@
+@use '../abstracts' as *;
+@use '../abstracts/placeholder';
+
+.container {
+	@include size( $maxw: 100rem , );
+	@include pbm( $m: 0 auto , );
+	@extend %disable-selection;
+}

@@ -1,11 +1,12 @@
 const path = require('path');
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const entries = require('./entries');
 
 module.exports = {
 	mode: 'development' ,
 	devtool: 'source-map' ,
-	entry: { index: path.resolve(__dirname, '../client/js/index.js') } ,
+	entry: entries ,
 	output: {
 		filename: '[name].bundle.js' ,
 		path: path.resolve(__dirname, '../public') ,

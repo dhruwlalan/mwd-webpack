@@ -3,10 +3,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const entries = require('./entries');
 
 module.exports = {
 	mode: 'production' ,
-	entry: { index: path.resolve(__dirname, '../client/js/index.js') } ,
+	entry: entries ,
 	output: {
 		filename: '[name].[contentHash].bundle.js' ,
 		path: path.resolve(__dirname, '../public') ,

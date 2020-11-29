@@ -1,10 +1,11 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const entries = require('./entries');
 
 module.exports = {
 	mode: 'development' ,
-	entry: { index: path.resolve(__dirname, '../client/js/index.js') } ,
+	entry: entries ,
 	output: {
 		filename: '[name].bundle.js' ,
 		path: path.resolve(__dirname, '../public') ,

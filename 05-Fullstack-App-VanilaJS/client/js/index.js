@@ -1,8 +1,7 @@
 import './assets.js';
 
-const greet = (name) => {
-	return `Welcome, ${name}!`;
-}
+
+const greet = (name) => `Welcome, ${name}!`;
 
 document.getElementById('greet-btn').addEventListener('click', () => {
 	const input = document.getElementById('input').value;
