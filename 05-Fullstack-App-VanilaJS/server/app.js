@@ -9,25 +9,19 @@ const cors = require('cors');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
-const config = require('../configs/webpack.dev.js');
+const config = require('../configs/webpack.start.js');
 
 /*Create Express App*/
 const app = express();
 
+/*Hook webpack-dev-middleware with hot reload*/
 if (process.env.FENV === 'development') {
-	/*Hook webpack-dev-middleware with hot reload*/
 	const compiler = webpack(config);
-	app.use(webpackDevMiddleware(compiler , { serverSideRender: true }));
+	app.use(webpackDevMiddleware(compiler));
 	app.use(webpackHotMiddleware(compiler));
-
-	/*Get Webpack Stats*/
-	app.use((req, res, next) => {
-		const { assetsByChunkName } = res.locals.webpack.devMiddleware.stats.toJson();
-		console.log(assetsByChunkName);
-		next();
-	});
-} else {
-	/*Scan /public dir */
+}
+/*Inject Bundles */
+if (process.env.FENV === 'production') {
 	let cssBundle = '';
     let indexBundle = '';
     let vendorBundle = '';

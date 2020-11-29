@@ -1,13 +1,21 @@
 const path = require('path');
+const webpack = require("webpack");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
 	mode: 'development' ,
+	devtool: 'source-map' ,
 	entry: { index: path.resolve(__dirname, '../client/js/index.js') } ,
 	output: {
 		filename: '[name].bundle.js' ,
 		path: path.resolve(__dirname, '../public') ,
+	} ,
+	devServer: {
+		contentBase: '../public' ,
+		historyApiFallback: true ,
+		overlay: true ,
+		inline: true ,
+	    hot: true ,
 	} ,
 	stats: {
 		assets: false ,
@@ -21,10 +29,7 @@ module.exports = {
 	    warnings: true ,
 	    errors: true ,
 	} ,
-	plugins: [
-		new MiniCssExtractPlugin({ filename: 'style.css' }) ,
-		new CleanWebpackPlugin() ,
-	] ,
+	plugins: [ new webpack.HotModuleReplacementPlugin() ] ,
 	optimization: {
         splitChunks: {
             cacheGroups: {
@@ -37,7 +42,7 @@ module.exports = {
             }
         }
     } ,
-    module: {
+	module: {
 		rules: [
 			{
 				test: /\.html$/ ,
@@ -46,14 +51,14 @@ module.exports = {
 			{
 				test: /\.css$/ ,
 				use: [
-					MiniCssExtractPlugin.loader ,
+					'style-loader',
 					{ loader: 'css-loader' , options: { url: false, } } ,
 				] ,
 			} ,
 			{
 				test: /\.scss$/ ,
 				use: [
-					MiniCssExtractPlugin.loader ,
+					'style-loader',
 					{ loader: 'css-loader' , options: { url: false, } } ,
 					'sass-loader' ,
 				] ,
@@ -91,6 +96,6 @@ module.exports = {
 					options: { name: '[name].[ext]' , esModule: false , outputPath: 'assets/fonts' } ,
 				} ,
 			} ,
-		]
+		] ,
 	} ,
 };
