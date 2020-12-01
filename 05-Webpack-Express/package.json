@@ -13,7 +13,6 @@
         "server": "cross-env FENV=production nodemon server/server.js",
         "server:prod": "cross-env FENV=production NODE_ENV=production nodemon server/server.js",
         "build:client": "webpack --config configs/webpack.prod.js",
-        "build:client:dev": "webpack --config configs/webpack.dev.js"
     },
     "dependencies": {
         "compression": "^1.7.4",
