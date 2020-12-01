@@ -9,8 +9,8 @@
         "start": "node server/server.js",
         "debug": "ndb server/server.js",
         "dev": "nodemon server/server.js",
-        "server": "cross-env FENV=production nodemon server/server.js",
         "prod": "run-s build:client server:prod",
+        "server": "cross-env FENV=production nodemon server/server.js",
         "server:prod": "cross-env FENV=production NODE_ENV=production nodemon server/server.js",
         "build:client": "webpack --config configs/webpack.prod.js"
     },
