@@ -51,6 +51,7 @@ module.exports = {
 				use: [
 					MiniCssExtractPlugin.loader ,
 					{ loader: 'css-loader' , options: { url: false } } ,
+					'postcss-loader' ,
 				] ,
 			} ,
 			{
@@ -58,6 +59,7 @@ module.exports = {
 				use: [
 					MiniCssExtractPlugin.loader ,
 					{ loader: 'css-loader' , options: { url: false } } ,
+					'postcss-loader' ,
 					'sass-loader' ,
 				] ,
 			} ,

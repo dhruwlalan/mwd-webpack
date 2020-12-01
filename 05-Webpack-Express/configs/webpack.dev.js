@@ -11,7 +11,7 @@ module.exports = {
 		path: path.resolve(__dirname, '../public') ,
 	} ,
 	stats: {
-		assets: false ,
+		assets: true ,
 		modules: false ,
 	    builtAt: false ,
 	    version: false ,
