@@ -11,9 +11,8 @@
         "dev": "nodemon server/server.js",
         "server": "cross-env FENV=production nodemon server/server.js",
         "prod": "run-s build:client server:prod",
-        "server:prod": "cross-env FENV=production NODE_ENV=production nodemon build/server.bundle.js",
-        "build:client": "webpack --config configs/webpack.prod.js",
-        "build:server": "webpack --config configs/webpack.server.js"
+        "server:prod": "cross-env FENV=production NODE_ENV=production nodemon server/server.js",
+        "build:client": "webpack --config configs/webpack.prod.js"
     },
     "dependencies": {
         "compression": "^1.7.4",
@@ -37,7 +36,6 @@
         "file-loader": "^6.0.0",
         "html-loader": "^1.2.1",
         "mini-css-extract-plugin": "^0.10.1",
-        "node-env-webpack-plugin": "^1.1.0",
         "npm-run-all": "^4.1.5",
         "optimize-css-assets-webpack-plugin": "^5.0.3",
         "regenerator-runtime": "^0.13.7",
@@ -48,8 +46,7 @@
         "webpack-cli": "^3.3.12",
         "webpack-dev-middleware": "^4.0.2",
         "webpack-dev-server": "^3.11.0",
-        "webpack-hot-middleware": "^2.25.0",
-        "webpack-node-externals": "^2.5.2"
+        "webpack-hot-middleware": "^2.25.0"
     },
     "engins": {
         "node": "^10"

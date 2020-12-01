@@ -6,40 +6,38 @@ const xss = require('xss-clean');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
 const cors = require('cors');
-const webpack = require('webpack');
-const webpackDevMiddleware = require('webpack-dev-middleware');
-const webpackHotMiddleware = require('webpack-hot-middleware');
-const config = require('../configs/webpack.start.js');
+
 
 /*Create Express App*/
 const app = express();
 
 /*Hook webpack-dev-middleware with hot reload*/
 if (process.env.FENV === 'development') {
+	const webpack = require('webpack');
+	const webpackDevMiddleware = require('webpack-dev-middleware');
+	const webpackHotMiddleware = require('webpack-hot-middleware');
+	const config = require('../configs/webpack.start.js');
 	const compiler = webpack(config);
 	app.use(webpackDevMiddleware(compiler));
 	app.use(webpackHotMiddleware(compiler));
 }
 /*Inject Bundles */
 if (process.env.FENV === 'production') {
-	let cssBundle = '';
-    let indexBundle = '';
-    let vendorBundle = '';
+	let bundle = {};
 	const publicDir = path.join(__dirname, '../public');
-	fs.readdir(publicDir , (err , files) => {
-	    if (err) return console.log('Unable to scan directory: ' + err);	    
-	    files.forEach(function (file) {	    	
-	    	if (file.startsWith('style')) cssBundle = file;
-	    	if (file.startsWith('index')) indexBundle = file;
-	    	if (file.startsWith('vendor')) vendorBundle = file;
-	    });
+	fs.readdir(publicDir , async (err , files) => {
+		if (err) return console.log('Unable to scan directory: ' + err);
+		let assetsName = await files.map((file) => file.split('.')[0]);
+		await files.forEach((file , i) => {
+			bundle = Object.defineProperty(bundle, assetsName[i] , {
+				value: files[i] ,
+				writable: true ,
+			    enumerable: true ,
+			});
+		});
 	});
 	app.use((req, res, next) => {
-		res.locals.assets = {
-			cssBundle ,
-			indexBundle ,
-			vendorBundle ,
-		}
+		res.locals.bundle = bundle
 		next();
 	});
 }

@@ -6,9 +6,9 @@ block append script
 		script(type='text/javascript' src='/vendor.bundle.js')
 		script(type='text/javascript' src='/index.bundle.js')
 	- else
-		- if (assets.vendorBundle !== '')
-			script(type='text/javascript' src=`/${assets.vendorBundle}`)
-		script(type='text/javascript' src=`/${assets.indexBundle}`)
+		- if (bundle.vendor)
+			script(type='text/javascript' src=`/${bundle.vendor}`)
+		script(type='text/javascript' src=`/${bundle.index}`)
 
 block content
 	div.container
