@@ -1,7 +1,7 @@
 {
-    "name": "Fullstack-App-VanilaJS",
+    "name": "Webpack-Express",
     "version": "1.0.0",
-    "description": "Template for fullstack vanila js app.",
+    "description": "Template for fullstack express app.",
     "main": "server.js",
     "author": "dhruw",
     "license": "MIT",
