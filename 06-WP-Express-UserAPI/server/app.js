@@ -3,9 +3,13 @@ const express = require('express');
 const basic = require('./middlewares/basic');
 const setSecurityHeaders = require('./middlewares/setSecurityHeaders');
 const connectWebpack = require('./middlewares/connectWebpack');
+const errorController = require('./controllers/errorController');
+const userRouter = require('./routes/userRoutes');
+
 
 /*Create Express App*/
 const app = express();
+
 
 /* ** Setup Security Middlewares ** */
 setSecurityHeaders(app);
@@ -19,10 +23,15 @@ basic.gzipResponses(app);
 
 
 /*Define Routes*/
-app.get('/' , (req , res) => {
+app.use( '/api/users' , userRouter );
+app.use( '/' , (req , res) => {
 	res.status(200).render('index' , {
-		msg: 'Hello, World!' ,
+		msg: 'Hello, World!!' ,
 	});
 });
+
+
+/*Global Error Handler Middleware, executed when passed argument inside next()*/
+app.use(errorController);
 
 module.exports = app;

@@ -6,7 +6,7 @@ const compression = require('compression');
 /*Setup Template Engine*/
 exports.setupTemplateEngin = (app) => {
 	app.set('view engine' , 'pug');
-	app.set('views' , path.join(__dirname , '../../views'));
+	app.set('views' , path.join(__dirname , '../views'));
 }
 
 /*Serve Static Files*/
