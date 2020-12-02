@@ -11,6 +11,8 @@
         "dev": "nodemon server/server.js",
         "prod": "run-s build:client server:prod",
         "server": "cross-env FENV=production nodemon server/server.js",
+        "oserver": "cross-env FENV=skip nodemon server/server.js",
+        "oserver:prod": "cross-env FENV=skip NODE_ENV=production nodemon server/server.js",
         "server:prod": "cross-env FENV=production NODE_ENV=production nodemon server/server.js",
         "build:client": "webpack --config configs/webpack.prod.js"
     },

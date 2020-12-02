@@ -16,8 +16,8 @@ router.use(authController.isLoggedIn);
 
 /*Logged In Routes*/
 router.use(authController.protect);
-router.patch('/updateMyPassword' , userController.updatePassword);
 router.patch('/updateMyData' , userController.updateData);
+router.patch('/updateMyPassword' , userController.updatePassword);
 
 /*Admin Routes CRUD*/
 router.use(authController.restrictTo('admin'));

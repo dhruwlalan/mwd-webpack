@@ -6,6 +6,7 @@ const Email = require('../utils/email');
 const sendResponse = require('../utils/sendResponse');
 const APIFeatures = require('../utils/apiFeatures');
 const createSendToken = require('../utils/createSendToken');
+const removeUnwantedFields = require('../utils/removeUnwantedFields');
 
 /*Open Routes*/
 exports.signup = catchAsync(async (req , res , next) => {
@@ -14,7 +15,6 @@ exports.signup = catchAsync(async (req , res , next) => {
         email: req.body.email ,
         password: req.body.password ,
         passwordConfirm: req.body.passwordConfirm ,
-        role: req.body.role ,
     });
     createSendToken(newUser , 201 , req , res);
 });
@@ -52,7 +52,7 @@ exports.forgetPassword = catchAsync(async (req , res , next) => {
 
     // 3 send it to users email:
     try {
-        const resetUrl = `${req.protocol }://${req.get('host') }/resetPassword/${resetToken }`;
+        const resetUrl = `${req.protocol }://${req.get('host') }/api/users/resetPassword/${resetToken }`;
         await new Email(user , resetUrl).send();
         res.status(200).json({
             status: 'success' ,
@@ -96,21 +96,19 @@ exports.updateData = catchAsync(async (req , res , next) => {
     // 2 Filtered out unwanted fields names that are not allowed to be updated:
     const filteredBody = {};
     Object.keys(req.body).forEach(el => {
-        if (['name', 'email' , 'photo'].includes(el)) filteredBody[el] = req.body[el];
+        if (['name', 'email'].includes(el)) filteredBody[el] = req.body[el];
     });
 
-    // 3 Append photo if user uploaded new profile photo:
-    if (req.file) { 
-        filteredBody.photo = req.file.location;
-        filteredBody.prePhoto = req.file.location;
-    }
-
-    // 3) Update user document:
-    const updatedUser = await User.findByIdAndUpdate(req.user.id , filteredBody , {
-        new: true,
-        runValidators: true
+    // 3 Update user document:
+    let updatedUser = await User.findByIdAndUpdate(req.user.id , filteredBody , {
+        new: true ,
+        runValidators: true ,
     });
+
+    // 4 Remove unwanted fields:
+    updatedUser = removeUnwantedFields(updatedUser);
     
+    // 5 Send success response:
     sendResponse(res , 200 , { user: updatedUser });
 });
 exports.updatePassword = catchAsync(async (req , res , next) => {
@@ -130,10 +128,6 @@ exports.updatePassword = catchAsync(async (req , res , next) => {
     // 4 log user in, send jwt:
     createSendToken(user , 200 , req , res);
 });
-exports.deleteMe = catchAsync(async (req , res , next) => {
-    await User.findByIdAndUpdate(req.user.id, { active: false });
-    sendResponse(res , 204 , null);
-});
 
 /*CRUD for Admin*/
 exports.getAllUsers = catchAsync(async (req , res) => {
@@ -152,7 +146,6 @@ exports.getUser = catchAsync(async (req , res) => {
 });
 exports.createUser = catchAsync(async (req , res) => {
     const newUser = await User.create(req.body);
-    newUser.active = undefined;
     newUser.password = undefined;
     newUser.__v = undefined;
     sendResponse(res , 200 , { newUser });
