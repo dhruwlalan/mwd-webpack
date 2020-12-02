@@ -1,5 +1,5 @@
 require('dotenv').config();
-const mongodb = require('./mongodb.js');
+const mongodb = require('./database/mongodb.js');
 const app = require('./app.js');
 
 

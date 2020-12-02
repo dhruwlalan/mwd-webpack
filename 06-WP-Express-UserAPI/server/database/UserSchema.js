@@ -74,8 +74,5 @@ userSchema.methods.createPasswordResetToken = function () {
 	return resetToken;
 }
 
-/*Create User Model based on the userSchema*/
-const User = mongoose.model('User' , userSchema);
-
-/*Export the User Model*/
-module.exports = User;
+/*Export the User Schema*/
+module.exports = userSchema;
