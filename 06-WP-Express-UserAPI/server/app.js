@@ -24,9 +24,18 @@ basic.gzipResponses(app);
 
 /*Define Routes*/
 app.use( '/api/users' , userRouter );
-app.use( '/' , (req , res) => {
+app.get( '/' , (req , res) => {
 	res.status(200).render('index' , {
 		msg: 'Hello, World!!' ,
+	});
+});
+
+
+/*Handle Undefined Routes*/
+app.all( '*' , (req , res , next) => {
+	res.status(404).json({
+		status: '404' ,
+		unknownRoute: req.originalUrl ,
 	});
 });
 

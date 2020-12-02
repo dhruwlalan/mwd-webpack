@@ -1,7 +1,4 @@
 const crypto = require('crypto');
-const multer = require('multer');
-const sharp = require('sharp');
-const AWS = require('aws-sdk')
 const User = require('../models/UserModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
@@ -9,60 +6,6 @@ const Email = require('../utils/email');
 const sendResponse = require('../utils/sendResponse');
 const APIFeatures = require('../utils/apiFeatures');
 const createSendToken = require('../utils/createSendToken');
-
-
-/*Configure AWS S3*/
-const s3 = new AWS.S3({
-    accessKeyId: process.env.AWS_ID ,
-    secretAccessKey: process.env.AWS_SECRET ,
-});
-
-/*Configure Multer & Sharp*/
-const upload = multer({
-    storage: multer.memoryStorage() ,
-    fileFilter: (req , file , cb) => {
-        if (file.mimetype.startsWith('image')) {
-            cb(null , true);
-        } else {
-            cb(new AppError('Not an image! Please upload only images.' , 400) , false);
-        }
-    } ,
-});
-exports.uploadUserPhoto = upload.single('photo');
-exports.resizeUserPhoto = async (req , res , next) => {
-    if (!req.file) return next();
-    req.file.filename = `u-${req.user.id }-${Date.now() }.jpeg`;
-    
-    const data = await sharp(req.file.buffer).resize(300 , 300).toFormat('jpeg').toBuffer();
-    const params = {
-        Bucket: process.env.AWS_BUCKET_NAME,
-        Key: req.file.filename ,
-        Body: data ,
-    }
-
-    if (req.user.prePhoto) {
-        const oldPhotoIndex = req.user.prePhoto.indexOf('u-');
-        const oldPhotoKey = req.user.prePhoto.slice(oldPhotoIndex , req.user.prePhoto.length);
-        
-        await s3.deleteObject({
-            Bucket: process.env.AWS_BUCKET_NAME ,
-            Key: oldPhotoKey ,
-        } , (error , data) => {
-            if (error) {
-                return next(new AppError('Unable to delete previous photo',400));
-            }
-        });
-    }
-
-    await s3.upload(params, (error, data) => {
-        if (error) {
-            console.log(error);
-            return next(new AppError('Image upload to aws is unsuccessfull!',400));
-        }
-        req.file.location = data.Location;
-        next();
-    });
-}
 
 /*Open Routes*/
 exports.signup = catchAsync(async (req , res , next) => {

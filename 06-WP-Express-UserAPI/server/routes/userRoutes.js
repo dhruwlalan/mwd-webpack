@@ -2,7 +2,7 @@ const router = require('express').Router({ strict: true });
 const authController = require('../controllers/authController');
 const userController = require('../controllers/userController');
 
-/*REST API - /api/v1/users/~*/
+/*REST API - /api/users/**/
 
 /*Open Routes*/
 router.post('/signup' , userController.signup);
@@ -17,8 +17,7 @@ router.use(authController.isLoggedIn);
 /*Logged In Routes*/
 router.use(authController.protect);
 router.patch('/updateMyPassword' , userController.updatePassword);
-router.patch('/updateMe' , userController.uploadUserPhoto , userController.resizeUserPhoto , userController.updateMe);
-router.delete('/deleteMe' , userController.deleteMe);
+router.patch('/updateMyData' , userController.updateData);
 
 /*Admin Routes CRUD*/
 router.use(authController.restrictTo('admin'));
@@ -32,7 +31,8 @@ router.route('/:id')
 
 /*Handle Undefined Routes*/
 router.all( '*' , (req , res , next) => {
-	res.status(404).render('pageNotFound' , {
+	res.status(404).json({
+		status: '404' ,
 		unknownRoute: req.originalUrl ,
 	});
 });
