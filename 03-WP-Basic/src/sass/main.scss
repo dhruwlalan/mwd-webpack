@@ -1,6 +1,6 @@
 
-*, 
-*::after, 
+*,
+*::after,
 *::before {
 	margin: 0;
 	padding: 0;
@@ -12,12 +12,12 @@ html {
 }
 
 body {
-    box-sizing: border-box;
-    font-size: 3rem;
-    color: mediumspringgreen;
-    text-align: center;
-    background-color: teal;
-    min-height: 100vh;
+   box-sizing: border-box;
+   font-size: 3rem;
+   color: mediumspringgreen;
+   text-align: center;
+   background-color: teal;
+   min-height: 100vh;
 }
 
 h1 {
@@ -76,10 +76,10 @@ input {
 }
 
 .btn-primary:focus {
-  color: teal;
-  background-color: mediumspringgreen;
-  border-color: none;
-  box-shadow: none;
+   color: teal;
+   background-color: mediumspringgreen;
+   border-color: none;
+   box-shadow: none;
 }
 
 .svg-icon {
