@@ -13,25 +13,25 @@
 	width: $w;
 	min-width: $minw;
 	max-width: $maxw;
-	}
+}
 
 @mixin bg(
-	$i: 	null, // background-image: url()
-	$lg: 	null, // background-image: linear-gradient()
-	$rg: 	null, // background-image: radial-gradient()
-	$p: 	null, // background-position
-	$s: 	null, // background-size
-	$r: 	null, // background-repeat
-	$o: 	null, // background-origin
+	$i: 	   null, // background-image: url()
+	$lg: 	   null, // background-image: linear-gradient()
+	$rg: 	   null, // background-image: radial-gradient()
+	$p: 	   null, // background-position
+	$s: 	   null, // background-size
+	$r: 	   null, // background-repeat
+	$o: 	   null, // background-origin
 	$clip:	null, // background-clip
-	$a: 	null, // background-attachment
-	$c: 	null, // background-color
+	$a: 	   null, // background-attachment
+	$c: 	   null, // background-color
 ){
 	@if $i != null { background: url(#{$i}) $p $s $r $o $clip $a $c; }
 	@else if $lg != null { background: linear-gradient(#{$lg}) $p $s $r $o $clip $a $c; }
 	@else if $rg != null { background: radial-gradient(#{$rg}) $p $s $r $o $clip $a $c; }
 	@else { background: $p $s $r $o $clip $a $c; }
-	}
+}
 
 @mixin typo(
 	$c: 		null, // color:
@@ -72,7 +72,7 @@
 	word-break: $wb;
 	word-spacing: $ws;
 	white-space: $wspace;
-	}
+}
 
 @mixin pbm(
 	$p: 	null, // padding:
@@ -150,19 +150,19 @@
 	}
 
 @mixin pos-fixed(
-    $t: null, // top:
-    $b: null, // bottom:
-    $l: null, // left:
-    $r: null, // right:
-    $z: null, // z-index:
+   $t: null, // top:
+   $b: null, // bottom:
+   $l: null, // left:
+   $r: null, // right:
+   $z: null, // z-index:
 ) {
-    position: fixed;
-    top: $t;
-    bottom: $b;
-    left: $l;
-    right: $r;
-    z-index: $z;
-    }
+   position: fixed;
+   top: $t;
+   bottom: $b;
+   left: $l;
+   right: $r;
+   z-index: $z;
+   }
 
 @mixin pos-sticky(
 	$t: null, // top:
@@ -236,7 +236,7 @@
 	align-items: $ai;
 	justify-content: $jc;
 	align-content: $ac;
-	}
+}
 
 @mixin grid-item(
 	$row: 		null, // grid-row:
@@ -252,7 +252,7 @@
 	align-self: $as;
 	order: $order;
 	grid-area: $area;
-	}
+}
 
 
 @mixin disable-selection {
