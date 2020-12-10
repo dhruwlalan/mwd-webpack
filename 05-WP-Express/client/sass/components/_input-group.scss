@@ -1,18 +1,18 @@
 @use '../abstracts' as *;
 
 .input-group {
-	@include flex( $jc: center , $ai: center , );
+   @include flex($jc: center, $ai: center);
 
-	&__label {
-		@include typo( $c: $secondary , $ff: $roboto , $fs: 4rem , $fw: 500 , );
-		@include pbm( $mr: 2rem , );
-	}
+   &__label {
+      @include typo($c: $secondary, $ff: $roboto, $fs: 4rem, $fw: 500);
+      @include pbm($mr: 2rem);
+   }
 
-	&__input {
-		@include size( $h: 5rem , $w: 30rem , );
-		@include bg( $c: transparent , );
-		@include typo( $c: $secondary , $ff: $roboto , $fs: 2.5rem , $fw: 400 , );
-		@include pbm( $p: 0 2rem , $b: none , $bb: 2px solid $secondary , );
-		outline: none;
-	}
+   &__input {
+      @include size($h: 5rem, $w: 30rem);
+      @include bg($c: transparent);
+      @include typo($c: $secondary, $ff: $roboto, $fs: 2.5rem, $fw: 400);
+      @include pbm($p: 0 2rem, $b: none, $bb: 2px solid $secondary);
+      outline: none;
+   }
 }

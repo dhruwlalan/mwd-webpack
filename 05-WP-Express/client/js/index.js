@@ -1,6 +1,6 @@
 import './assets';
-/* ↙ start ↘ */
 
+///start///
 const greet = (name) => `Welcome, ${name}!`;
 
 document.getElementById('greet-btn').addEventListener('click', () => {

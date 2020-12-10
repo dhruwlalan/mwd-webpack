@@ -17,6 +17,7 @@ module.exports = {
       'no-console': 0,
       'no-unused-vars': 1,
       'spaced-comment': 0,
+      'consistent-return': 0,
       quotes: [
          2,
          'single',

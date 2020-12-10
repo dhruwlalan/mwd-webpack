@@ -1,16 +1,16 @@
 @use '../abstracts' as *;
 
 :root {
-	// fonts:
-	--roboto: 'Roboto', sans-serif;
-	// colors:
-	--white: White;
-	--background: Teal;
-	--primary: MediumSpringGreen;
-	--secondary: Lavender;
+   // fonts:
+   --roboto: "Roboto", sans-serif;
+   // colors:
+   --white: White;
+   --background: Teal;
+   --primary: MediumSpringGreen;
+   --secondary: Lavender;
 }
 
 body {
-	@include bg( $c: $background , );
-	@include pbm( $p: 2rem , $pt: 5rem , );
+   @include bg($c: $background);
+   @include pbm($p: 2rem, $pt: 5rem);
 }

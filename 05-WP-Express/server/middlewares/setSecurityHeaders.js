@@ -1,14 +1,16 @@
 const helmet = require('helmet');
 const cors = require('cors');
 
-/* ** Setup Security Middlewares ** */
+///Setup Security Middlewares///
 module.exports = (app) => {
-   // 1 trust x-forworded-for header attribute
+   //#1 trust x-forwarded-for header attribute#//
    app.enable('trust proxy');
-   // 2 enable cross-origin resource sharing
+
+   //#2 enable cross-origin resource sharing#//
    app.use(cors());
    app.options('*', cors());
-   // 3 setup some security http headers
+
+   //#3 setup some security http headers#//
    app.use(helmet());
    app.use(
       helmet.contentSecurityPolicy({
