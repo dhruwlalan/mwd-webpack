@@ -49,7 +49,7 @@ exports.isLoggedIn = async (req, res, next) => {
 };
 
 ///Protecting Routes to only Logged In Users///
-exports.protect = catchAsync(async (req, res, next) => {
+exports.protect = catchAsync(async (req, _res, next) => {
    if (!req.token)
       return next(new AppError('You are not logged in! Please login to get access', 401));
 
@@ -62,7 +62,7 @@ exports.protect = catchAsync(async (req, res, next) => {
 });
 
 ///Restricting Routes to only Admin Users///
-exports.restrictTo = (...roles) => (req, res, next) => {
+exports.restrictTo = (...roles) => (req, _res, next) => {
    if (!roles.includes(req.user.role)) {
       return next(new AppError('You do not have permission to perform this action', 403));
    }
