@@ -15,7 +15,6 @@ module.exports = {
    },
    rules: {
       'no-console': 0,
-      'no-unused-vars': 1,
       'spaced-comment': 0,
       'consistent-return': 0,
       'no-param-reassign': 0,
@@ -23,6 +22,7 @@ module.exports = {
       'class-methods-use-this': 0,
       'func-names': 0,
       'prefer-destructuring': 0,
+      'no-unused-vars': ['error', { vars: 'all', args: 'none', ignoreRestSiblings: false }],
       quotes: [
          2,
          'single',
