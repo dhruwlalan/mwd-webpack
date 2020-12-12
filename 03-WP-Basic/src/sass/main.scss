@@ -1,14 +1,13 @@
-
 *,
 *::after,
 *::before {
-	margin: 0;
-	padding: 0;
-	box-sizing: inherit;
+   margin: 0;
+   padding: 0;
+   box-sizing: inherit;
 }
 
 html {
-	font-size: 62.5%;
+   font-size: 62.5%;
 }
 
 body {
@@ -21,58 +20,58 @@ body {
 }
 
 h1 {
-	display: inline-block;
-	font-size: 6rem;
-	font-weight: 800;
+   display: inline-block;
+   font-size: 6rem;
+   font-weight: 800;
 }
 
 h4 {
-	font-size: 4rem;
-	margin-top: 4rem;
-	color: LIGHTCYAN;
-	font-weight: 600;
+   font-size: 4rem;
+   margin-top: 4rem;
+   color: LIGHTCYAN;
+   font-weight: 600;
 }
 
 label {
-	font-size: 4rem;
-	margin: 2rem;
-	color: LIGHTCYAN;
+   font-size: 4rem;
+   margin: 2rem;
+   color: LIGHTCYAN;
 }
 
 input {
-	outline: none;
-	background-color: transparent;
-	border: none;
-	border-bottom: 3px solid LIGHTCYAN;
-	color: LIGHTCYAN;
-	height: 5rem;
-	padding: 2rem;
+   outline: none;
+   background-color: transparent;
+   border: none;
+   border-bottom: 3px solid LIGHTCYAN;
+   color: LIGHTCYAN;
+   height: 5rem;
+   padding: 2rem;
 }
 
 #greet-btn {
-	margin-top: 2rem;
-	font-size: 2rem;
-	font-weight: 600;
-	color: teal;
-	height: 5rem;
-	width: 18rem;
-	border-radius: 1rem;
-	align-self: center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+   margin-top: 2rem;
+   font-size: 2rem;
+   font-weight: 600;
+   color: teal;
+   height: 5rem;
+   width: 18rem;
+   border-radius: 1rem;
+   align-self: center;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
 .container {
-	padding-top: 5rem;
-	display: flex;
-	flex-direction: column;
+   padding-top: 5rem;
+   display: flex;
+   flex-direction: column;
 }
 
 .input-group {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
 .btn-primary:focus {
@@ -83,20 +82,20 @@ input {
 }
 
 .svg-icon {
-	height: 2.5rem;
-	width: 2.5rem;
-	margin-left: 6px;
+   height: 2.5rem;
+   width: 2.5rem;
+   margin-left: 6px;
 }
 
 .webpack-img {
-	height: 5rem;
-	width: 5rem;
-	margin-right: 2rem;
+   height: 5rem;
+   width: 5rem;
+   margin-right: 2rem;
 }
 
 .header {
-	margin-bottom: 2rem;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+   margin-bottom: 2rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
