@@ -5,10 +5,14 @@
    --ss: sans-serif;
 
    //#colors:#//
-   --white: White;
+   --white: LightCyan;
+   --primary: Teal;
+   --secondary: MediumSpringGreen;
 }
 
 body {
+   @include typo($ff: $ss, $c: $secondary);
+   @include bg($c: $primary);
    -webkit-tap-highlight-color: transparent;
    tap-highlight-color: transparent;
 }

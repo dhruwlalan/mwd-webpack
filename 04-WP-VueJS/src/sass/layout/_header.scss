@@ -1,0 +1,15 @@
+@use '../abstracts' as *;
+
+.header {
+   @include pbm($mb: 2rem);
+   @include flex($jc: center, $ai: center);
+
+   &__img {
+      @include size($h: 10rem, $w: 10rem);
+      @include pbm($mr: 2rem);
+   }
+
+   &__title {
+      @include typo($fs: 6rem, $fw: 800);
+   }
+}

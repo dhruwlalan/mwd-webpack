@@ -1,0 +1,19 @@
+@use '../abstracts' as *;
+
+.btn {
+   @include size($h: 5rem, $w: 18rem);
+   @include bg($c: $secondary);
+   @include typo($c: $primary, $fs: 2rem, $fw: 600);
+   @include pbm($b: none, $rad: 1rem, $mt: 3rem);
+   @include flex($jc: center, $ai: center);
+   cursor: pointer;
+   outline: none;
+
+   &:active {
+      background-color: #75ffca;
+   }
+
+   &:focus {
+      box-shadow: 0 0 0 4px rgb(0 250 154 / 40%);
+   }
+}

@@ -1,5 +1,11 @@
 ///BASE///
 @use "base/base";
 @use "base/reset";
+///COMPONENTS///
+@use "components/input-group";
+@use "components/svg-icon";
+@use "components/btn";
 ///LAYOUT///
 @use "layout/container";
+@use "layout/header";
+@use "layout/output";
