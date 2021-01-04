@@ -1,0 +1,23 @@
+
+extends base
+
+block append script
+	- if ( process.env.FENV === 'development')
+		script(type='text/javascript' src='/vendor.bundle.js')
+		script(type='text/javascript' src='/index.bundle.js')
+	- else
+		- if (bundle.vendor)
+			script(type='text/javascript' src=`/${bundle.vendor}`)
+		script(type='text/javascript' src=`/${bundle.index}`)
+
+block content
+	div.container
+		div.header
+			img.header__img(src="/assets/images/webpack.png")
+			h1.header__title= title
+		div.input-group
+			label.input-group__label Enter your name:
+			input.input-group__input(type="text" id="input" autocomplete="off")
+		button.btn Greet
+			img.svg-icon(src="/assets/svg/greet.svg")
+		h4(id="output")

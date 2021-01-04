@@ -1,0 +1,6 @@
+@use '../abstracts' as *;
+
+h4 {
+   @include typo($fs: 4rem, $c: $white, $fw: 600);
+   @include pbm($mt: 4rem);
+}

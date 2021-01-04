@@ -1,0 +1,18 @@
+@use '../abstracts' as *;
+
+:root {
+   //#fonts:#//
+   --ss: sans-serif;
+
+   //#colors:#//
+   --white: LightCyan;
+   --primary: Teal;
+   --secondary: MediumSpringGreen;
+}
+
+body {
+   @include typo($ff: $ss, $c: $secondary);
+   @include bg($c: $primary);
+   -webkit-tap-highlight-color: transparent;
+   tap-highlight-color: transparent;
+}

@@ -1,6 +1,0 @@
-@use '../abstracts' as *;
-
-#output {
-   @include typo($c: $secondary, $ff: $roboto, $fs: 4rem, $fw: 500, $ta: center);
-   @include pbm($mt: 4rem);
-}
