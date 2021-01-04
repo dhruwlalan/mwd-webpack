@@ -4,10 +4,52 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
    mode: 'development',
    devtool: 'source-map',
-   entry: { index: path.resolve(__dirname, '../src/js/index.js') },
+   entry: { index: path.resolve(__dirname, '../src/main.js') },
    output: {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, '../dist'),
+   },
+   stats: {
+      warnings: true,
+      errors: true,
+      colors: true,
+      assets: false,
+      builtAt: false,
+      modules: false,
+      performance: false,
+      timings: false,
+      version: false,
+      entrypoints: false,
+      hash: false,
+   },
+   devServer: {
+      contentBase: '../dist',
+      historyApiFallback: true,
+      overlay: true,
+      inline: true,
+      hot: true,
+      port: 8000,
+      clientLogLevel: 'silent',
+   },
+   plugins: [
+      new HtmlWebpackPlugin({
+         filename: 'index.html',
+         template: path.resolve(__dirname, '../src', 'index.html'),
+         chunks: ['index'],
+      }),
+   ],
+   optimization: {
+      runtimeChunk: 'single',
+      splitChunks: {
+         cacheGroups: {
+            vendors: {
+               test: /[\\/]node_modules[\\/]/,
+               name: 'vendor',
+               chunks: 'all',
+               enforce: true,
+            },
+         },
+      },
    },
    module: {
       rules: [
@@ -57,29 +99,5 @@ module.exports = {
             },
          },
       ],
-   },
-   plugins: [
-      new HtmlWebpackPlugin({
-         filename: 'index.html',
-         template: path.resolve(__dirname, '../src', 'index.html'),
-         chunks: ['index'],
-      }),
-   ],
-   devServer: {
-      historyApiFallback: true,
-      noInfo: true,
-      overlay: true,
-   },
-   optimization: {
-      splitChunks: {
-         cacheGroups: {
-            vendors: {
-               test: /[\\/]node_modules[\\/]/,
-               name: 'vendor',
-               chunks: 'all',
-               enforce: true,
-            },
-         },
-      },
    },
 };

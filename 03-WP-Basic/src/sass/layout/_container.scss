@@ -1,0 +1,6 @@
+@use '../abstracts' as *;
+
+.container {
+   @include pbm($pt: 5rem);
+   @include flex($fd: column, $ai: center);
+}

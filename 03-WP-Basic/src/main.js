@@ -1,13 +1,9 @@
-import './assets';
-import $ from 'jquery';
-import moment from 'moment';
+import './assets/assets';
 
 const greet = (name) => `Welcome, ${name}!`;
 
-document.getElementById('greet-btn').addEventListener('click', () => {
-   const input = $('#input').val();
-   const now = moment().toString();
-   console.log(now);
+document.querySelector('.btn').addEventListener('click', () => {
+   const input = document.getElementById('input').value;
    if (input) {
       const output = greet(input);
       document.getElementById('output').textContent = output;
